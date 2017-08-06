@@ -62,3 +62,21 @@ class TestImgurDownloader(object):
         Test if the provided URL leads to an image or album.
         """
         assert single_image_without_extension.is_it_image() == True
+
+    def test_is_it_album_image_with_extension(single_image_i):
+        """
+        Test if the provided URL leads to an image or album.
+        """
+        assert single_image_i.is_it_album() == False
+
+    def test_is_it_album_image_without_extension_i(single_image_without_extension_i):
+        """
+        Test if the provided URL leads to an image or album.
+        """
+        assert single_image_without_extension_i.is_it_album() == False
+
+    def test_is_it_album_image_without_extension(single_image_without_extension):
+        """
+        Test if the provided URL leads to an image or album.
+        """
+        assert single_image_without_extension.is_it_album() == False
