@@ -26,21 +26,21 @@ def album_a():
 def album_gallery():
     return ImgurDownloader('http://imgur.com/gallery/vTTHZ')
 
-def test_invalid_link(self):
+def test_invalid_link():
     """
     Test if the class raises exception for invalid link.
     """
     with pytest.raises(ImgurException):
         ImgurDownloader('https://www.reddit.com')
 
-def test_invalid_link_with_variation(self):
+def test_invalid_link_with_variation():
     """
     Test if the class raises exception for invalid link.
     """
     with pytest.raises(ImgurException):
         ImgurDownloader('https://www.reddit.com/imgur.com')
 
-def test_invalid_link_almost_correct(self):
+def test_invalid_link_almost_correct():
     """
     Test if the class raises exception for invalid link.
     """
