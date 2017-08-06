@@ -40,6 +40,13 @@ def test_invalid_link_with_variation(self):
     with pytest.raises(ImgurException):
         ImgurDownloader('https://www.reddit.com/imgur.com')
 
+def test_invalid_link_almost_correct(self):
+    """
+    Test if the class raises exception for invalid link.
+    """
+    with pytest.raises(ImgurException):
+        ImgurDownloader('http://.iimgur.com/0s7mWKz')
+
 def test_is_it_image_with_extension(single_image_i):
     """
     Test if the provided URL leads to an image or album.
