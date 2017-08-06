@@ -23,7 +23,7 @@ class TestImgurDownloader(object):
     def single_image_without_extension():
         return ImgurDownloader('http://imgur.com/0s7mWKz')
 
-    @pytest.fixutre
+    @pytest.fixture
     def album_a():
         return ImgurDownloader('http://imgur.com/a/vTTHZ')
 
@@ -44,3 +44,21 @@ class TestImgurDownloader(object):
         """
         with pytest.raises(ImgurException):
             ImgurDownloader('https://www.reddit.com/imgur.com')
+
+    def test_is_it_image_with_extension(single_image_i):
+        """
+        Test if the provided URL leads to an image or album.
+        """
+        assert single_image_i.is_it_image() == True
+
+    def test_is_it_image_without_extension_i(single_image_without_extension_i):
+        """
+        Test if the provided URL leads to an image or album.
+        """
+        assert single_image_without_extension_i.is_it_image() == True
+
+    def test_is_it_image_without_extension(single_image_without_extension):
+        """
+        Test if the provided URL leads to an image or album.
+        """
+        assert single_image_without_extension.is_it_image() == True
