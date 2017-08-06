@@ -1,0 +1,19 @@
+# Ignore system files and folders - Ubuntu
+*.*~
+
+# Ignore Python related files
+*.py[cod]
+__pycache__/
+.cache/
+
+# Ignore virtualenv files and folders
+pip-selfcheck.json
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+
+# Ignore selenium related files
+*driver.log
+selenium/
+screenshot.png
