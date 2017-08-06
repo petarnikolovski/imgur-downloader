@@ -35,3 +35,22 @@ class ImgurDownloader(object):
         if re.match('https*\:\/\/[i.]*imgur\.com', url):
             return url
         raise ImgurException('Invalid link.')
+
+    def is_it_image(self):
+        """
+        Check if the url points to image. Examples:
+
+        http(s)://i.imgur.com/[image_hash].[extension]
+        http(s)://i.imgur.com/[image_hash]
+        http(s)://imgur.com/[image_hash]
+        """
+        pass
+
+    def is_it_album(self):
+        """
+        Check if the url points to an album. Examples:
+
+        http(s)://imgur.com/a/[album_hash]
+        http(s)://imgur.com/gallery/[album_hash]
+        """
+        pass
