@@ -32,7 +32,7 @@ class ImgurDownloader(object):
         """
         Check if the supplied link is valid. If not, raise ImgurException.
         """
-        if re.match('https*\:\/\/(i.)*imgur\.com', url):
+        if re.match('https*\:\/\/(i.)*imgur\.com\/', url):
             return url
         raise ImgurException('Invalid link.')
 
