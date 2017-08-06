@@ -6,6 +6,9 @@ TODO: >add docstring<
 """
 
 
+import re
+
+
 class ImgurException(Exception):
     """
     This exception is raised if supplied link is invalid.
@@ -29,6 +32,6 @@ class ImgurDownloader(object):
         """
         Check if the supplied link is valid. If not, raise ImgurException.
         """
-        if url.startswith('http://imgur.com') or url.startswith('http://i.imgur.com'):
+        if re.match('https*\:\/\/[i.]*imgur\.com', url):
             return url
         raise ImgurException('Invalid link.')
