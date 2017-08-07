@@ -204,3 +204,9 @@ def test_build_image_links(album_gallery):
     candidate = [('0s7mWKz', '.jpg'), ('lciC5G8', '.jpg')]
     result = ['https://i.imgur.com/0s7mWKz.jpg', 'https://i.imgur.com/lciC5G8.jpg']
     assert album_gallery.build_image_url_list(candidate) == result
+
+def test_number_of_images(album_gallery):
+    """
+    Test the number of images contained in 'images' attribute.
+    """
+    assert album_gallery.number_of_images() == 0

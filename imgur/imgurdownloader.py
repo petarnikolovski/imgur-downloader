@@ -185,3 +185,9 @@ class ImgurDownloader(object):
         Returns a dictionary with image url and corresponding filename.
         """
         return {'url' : url, 'filename' : filename}
+
+    def number_of_images(self):
+        """
+        Get the number of images from the images attribute.
+        """
+        return len(self.images)
