@@ -64,3 +64,9 @@ class ImgurDownloader(object):
         http(s)://imgur.com/a/[album_hash]?grid
         """
         return self.url.endswith('?grid')
+
+    def change_gallery(self):
+        """
+        Change /gallery/ to /a/ in url.
+        """
+        return self.url.replace('/gallery/', '/a/')
