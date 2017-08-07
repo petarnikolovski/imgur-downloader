@@ -23,6 +23,10 @@ def album_a():
     return ImgurDownloader('http://imgur.com/a/vTTHZ')
 
 @pytest.fixture
+def album_grid():
+    return ImgurDownloader('http://imgur.com/a/vTTHZ?grid')
+
+@pytest.fixture
 def album_gallery():
     return ImgurDownloader('http://imgur.com/gallery/vTTHZ')
 
