@@ -31,6 +31,7 @@ class ImgurDownloader(object):
     def sanitize(self, url):
         """
         Check if the supplied link is valid. If not, raise ImgurException.
+        This method only checks if the domain is valid.
         """
         if re.match('https*\:\/\/(i.)*imgur\.com\/', url):
             return url
