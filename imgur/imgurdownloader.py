@@ -126,7 +126,7 @@ class ImgurDownloader(object):
                 try:
                     html = urlopen(self.url).read()
                     filenames_with_duplicates = re.findall(pattern, html)
-                    filenames = self.remove_duplicates(filenames_with_duplicates)
+                    filenames_clean = self.remove_duplicates(filenames_with_duplicates)
 
                 except HTTPError as e:
                     print(e.status)
@@ -137,6 +137,18 @@ class ImgurDownloader(object):
         # if not image, then it is gallery
         grid = self.url.turn_into_grid()
         return
+
+    def build_image_url_list(self, filenames):
+        """
+        Build list of direct links to images. Input filenames list is a list of
+        tuples e.g. [('0s7mWKz', '.jpg'), ('lciC5G8', '.jpg')]. The output looks
+        like:
+        ['https://i.imgur.com/0s7mWKz.jpg', 'https://i.imgur.com/lciC5G8.jpg']
+        """
+        urls = []
+        for filename, extension in filenames:
+            urls.append(''.join(['https://i.imgur.com/', filename, extension]))
+        return urls
 
     def remove_duplicates(self, filenames):
         """

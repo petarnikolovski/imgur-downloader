@@ -196,3 +196,11 @@ def test_duplicates(single_image_without_extension, album_gallery):
                    ('0s7mWKz', '.jpg'), ('lciC5G8', '.jpg')]
     assert single_image_without_extension.remove_duplicates(candidate_1) == [('0s7mWKz', '.jpg')]
     assert album_gallery.remove_duplicates(candidate_2) == [('0s7mWKz', '.jpg'), ('lciC5G8', '.jpg')]
+
+def test_build_image_links(album_gallery):
+    """
+    Test if the input list of filename tuples returns direct links to images.
+    """
+    candidate = [('0s7mWKz', '.jpg'), ('lciC5G8', '.jpg')]
+    result = ['https://i.imgur.com/0s7mWKz.jpg', 'https://i.imgur.com/lciC5G8.jpg']
+    assert album_gallery.build_image_url_list(candidate) == result
