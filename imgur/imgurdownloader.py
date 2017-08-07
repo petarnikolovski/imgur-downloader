@@ -144,7 +144,7 @@ class ImgurDownloader(object):
         if self.is_it_image():
             if self.contains_extension(self.url):
                 self.images.append(
-                        pack_image(self.url, get_image_filename(self.url))
+                        self.pack_image(self.url, get_image_filename(self.url))
                     )
                 return
             else:
@@ -163,10 +163,10 @@ class ImgurDownloader(object):
             html = urlopen(url).read().decode('utf-8')
             filenames_with_duplicates = re.findall(pattern, html)
             filenames_clean = self.remove_duplicates(filenames_with_duplicates)
-            urls = build_image_url_list(filenames_clean)
+            urls = self.build_image_url_list(filenames_clean)
             for url in urls:
                 self.images.append(
-                    pack_image(url, self.get_image_filename(url))
+                    self.pack_image(url, self.get_image_filename(url))
                 )
         except HTTPError as e:
             print(e.status)
