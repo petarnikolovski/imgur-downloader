@@ -110,3 +110,15 @@ def test_is_it_album_gallery(album_gallery):
     Test if the provided URL leads to an image or album.
     """
     assert album_gallery.is_it_album() == True
+
+def test_if_album_ends_with_grid_1(album_a):
+    """
+    Test if the provided link ends with '?grid'
+    """
+    assert album_a.is_it_grid() == False
+
+def test_if_album_ends_with_grid_2(album_grid):
+    """
+    Test if the provided link ends with '?grid'
+    """
+    assert album_a.is_it_grid() == True
