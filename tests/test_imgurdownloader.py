@@ -128,3 +128,10 @@ def test_gallery_to_a(album_gallery, album_a):
     Change /gallery/ to /a/
     """
     assert album_gallery.change_gallery() == album_a.url
+
+def test_turn_album_into_grid(album_gallery, album_a, album_grid):
+    """
+    Turn album into grid.
+    """
+    assert album_gallery.turn_into_grid() == album_grid.url
+    assert album_a.turn_into_grid() == album_grid.url

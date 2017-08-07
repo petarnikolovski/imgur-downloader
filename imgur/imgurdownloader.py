@@ -70,3 +70,9 @@ class ImgurDownloader(object):
         Change /gallery/ to /a/ in url.
         """
         return self.url.replace('/gallery/', '/a/')
+
+    def turn_into_grid(self):
+        """
+        Append ?grid to url.
+        """
+        pass
