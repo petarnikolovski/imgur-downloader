@@ -45,7 +45,8 @@ class ImgurDownloader(object):
         http(s)://i.imgur.com/[image_hash]
         http(s)://imgur.com/[image_hash]
         """
-        pass
+        # https*\:\/\/(i\.)?imgur\.com\/[a-zA-Z0-9]*(\.[a-zA-Z]{1,4})?
+        return not self.is_it_album()
 
     def is_it_album(self):
         """
