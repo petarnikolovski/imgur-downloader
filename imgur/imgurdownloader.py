@@ -116,11 +116,16 @@ class ImgurDownloader(object):
         pattern = 'https*\:\/\/i\.imgur\.com\/[a-zA-Z0-9]+\.[a-zA-Z]{1,4}'
         if self.url.is_it_image():
             if self.contains_extension(self.url):
-                pass
+                self.images.append(
+                        pack_image(self.url, get_image_filename(self.url))
+                    )
+                return
             else:
                 pass
+                return
         # if not image, then it is gallery
         grid = self.url.turn_into_grid()
+        return
 
     def contains_extension(self, url):
         """
