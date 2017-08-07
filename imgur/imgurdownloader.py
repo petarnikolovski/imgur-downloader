@@ -8,7 +8,7 @@ TODO: >add docstring<
 
 import re
 from collections import deque
-from url.request import urlopen
+from urllib.request import urlopen
 
 
 class ImgurException(Exception):
@@ -82,3 +82,11 @@ class ImgurDownloader(object):
             if not self.is_it_grid():
                 return ''.join([self.change_gallery(), '?grid'])
         raise ImgurException('Cannot convert single image into album grid.')
+
+    def get_images(self):
+        """
+        Parses HTML from the provided url to obtain link(s) to image(s). Raises
+        exception if the link already ends with an extension.
+        """
+        # https*\:\/\/i\.imgur\.com\/[a-zA-Z0-9]+\.[a-zA-Z]{1,4}
+        pass

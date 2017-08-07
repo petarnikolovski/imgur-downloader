@@ -2,6 +2,7 @@
 
 
 import pytest
+from collections import deque
 from imgur.imgurdownloader import ImgurDownloader
 from imgur.imgurdownloader import ImgurException
 
@@ -142,3 +143,28 @@ def test_raise_exception_turn_into_grid(single_image_i):
     """
     with pytest.raises(ImgurException):
         single_image_i.turn_into_grid()
+
+def test_get_image(single_image_without_extension):
+    """
+    Get a direct link to a single image.
+    """
+    result = deque({
+        'url' : 'http://i.imgur.com/0s7mWKz.jpg',
+        'filename' : '0s7mWKz.jpg',
+    })
+    single_image_without_extension.get_images()
+    assert single_image_without_extension.images == result
+
+def test_get_images(album_gallery):
+    """
+    Get images from an album.
+    """
+    result = deque({
+        'url' : 'http://i.imgur.com/lciC5G8.jpg',
+        'filename' : 'lciC5G8.jpg',
+    }, {
+        'url' : 'http://i.imgur.com/6O1hqeY.jpg',
+        'filename' : '6O1hqeY.jpg',
+    })
+    album_gallery.get_images()
+    assert album_gallery.images == result
