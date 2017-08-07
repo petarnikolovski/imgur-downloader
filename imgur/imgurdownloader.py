@@ -140,7 +140,7 @@ class ImgurDownloader(object):
         exception if the link already ends with an extension.
         """
         pattern = '\{.*?"hash":"([a-zA-Z0-9]+)".*?"ext":"([\.a-zA-Z0-9]+)".*?\}'
-        if self.url.is_it_image():
+        if self.is_it_image():
             if self.contains_extension(self.url):
                 self.images.append(
                         pack_image(self.url, get_image_filename(self.url))
