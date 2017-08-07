@@ -2,7 +2,32 @@
 
 
 """
-TODO: >add docstring<
+This module contains classes for parsing the imgur.com site. It consists of three
+classes:
+
+~ ImgurException
+~ ImgurFileFormats
+~ ImgurDownloader
+
+ImgurDownloader is the main class. Contrary to its name, it does not download
+anything, but it obtains list of direct image urls that could be used to download
+images. Example usage:
+
+```python3
+imgur = ImgurDownloader('http://imgur.com/gallery/vTTHZ')
+imgur.get_images()
+images = imgur.images
+```
+
+imgur.images is a deque of two keyed dictionaries. Example usage:
+
+```python3
+for image in images:
+    print(image['url'], image['filename'])
+```
+
+TODO: Rename get_images to prepare_images, it makes more sense. And rename
+      ImgurDownloader simply to Imgur.
 """
 
 
