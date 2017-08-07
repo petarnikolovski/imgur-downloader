@@ -121,4 +121,4 @@ def test_if_album_ends_with_grid_2(album_grid):
     """
     Test if the provided link ends with '?grid'
     """
-    assert album_a.is_it_grid() == True
+    assert album_grid.is_it_grid() == True

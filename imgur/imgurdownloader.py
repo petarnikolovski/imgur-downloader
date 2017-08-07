@@ -55,3 +55,11 @@ class ImgurDownloader(object):
         http(s)://imgur.com/gallery/[album_hash]
         """
         pass
+
+    def is_it_grid(self):
+        """
+        Check if the url points to a grid view. Example:
+
+        http(s)://imgur.com/a/[album_hash]?grid
+        """
+        return self.url.endswith('?grid')
