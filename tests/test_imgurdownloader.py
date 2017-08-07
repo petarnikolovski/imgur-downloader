@@ -144,6 +144,7 @@ def test_raise_exception_turn_into_grid(single_image_i):
     with pytest.raises(ImgurException):
         single_image_i.turn_into_grid()
 
+@pytest.mark.skip(reason='no way of currently testing this')
 def test_get_image(single_image_without_extension):
     """
     Get a direct link to a single image.
@@ -155,6 +156,7 @@ def test_get_image(single_image_without_extension):
     single_image_without_extension.get_images()
     assert single_image_without_extension.images == result
 
+@pytest.mark.skip(reason='no way of currently testing this')
 def test_get_images(album_gallery):
     """
     Get images from an album.
