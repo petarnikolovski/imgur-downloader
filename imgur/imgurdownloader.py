@@ -54,7 +54,7 @@ class ImgurDownloader(object):
         http(s)://imgur.com/a/[album_hash]
         http(s)://imgur.com/gallery/[album_hash]
         """
-        pass
+        return ('/a/' in self.url) or ('/gallery/' in self.url)
 
     def is_it_grid(self):
         """
