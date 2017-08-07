@@ -104,6 +104,8 @@ class ImgurDownloader(object):
         if self.is_it_album():
             if not self.is_it_grid():
                 return ''.join([self.change_gallery(), '?grid'])
+            else:
+                return self.url
         raise ImgurException('Cannot convert single image into album grid.')
 
     def get_images(self):
@@ -112,3 +114,7 @@ class ImgurDownloader(object):
         exception if the link already ends with an extension.
         """
         pattern = 'https*\:\/\/i\.imgur\.com\/[a-zA-Z0-9]+\.[a-zA-Z]{1,4}'
+        if self.url.is_it_image():
+            pass
+        # if not image, then it is gallery
+        grid = self.url.turn_into_grid()
