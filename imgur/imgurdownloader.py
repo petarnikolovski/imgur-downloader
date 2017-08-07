@@ -115,16 +115,28 @@ class ImgurDownloader(object):
         """
         pattern = 'https*\:\/\/i\.imgur\.com\/[a-zA-Z0-9]+\.[a-zA-Z]{1,4}'
         if self.url.is_it_image():
-            pass
+            if self.contains_extension(self.url):
+                pass
+            else:
+                pass
         # if not image, then it is gallery
         grid = self.url.turn_into_grid()
 
-    def contains_extension(self):
+    def contains_extension(self, url):
         """
         Check if the image url contains extension. If there is an extension it
         is returned. Otherwise, None is returned.
         """
         for extension in ImgurFileFormats.FILEFORMATS:
-            if extension in self.url:
+            if extension in url:
                 return extension
         return None
+
+    def get_image_filename(self, url):
+        """
+        Get image file name from its url.
+        """
+        candidate = url.split('/')[-1]
+        extension = self.contains_extension(url)
+        pattern = ''.join(['.+\\', extension])
+        return re.match(pattern, candidate).group(0)

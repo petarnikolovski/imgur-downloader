@@ -176,5 +176,13 @@ def test_contains_extension(single_image_i, single_image_without_extension):
     """
     Check if the extension is contained in image url.
     """
-    assert single_image_i.contains_extension() == '.jpg'
-    assert single_image_without_extension.contains_extension() == None
+    assert single_image_i.contains_extension(single_image_i.url) == '.jpg'
+    assert single_image_without_extension.contains_extension(
+            single_image_without_extension.url
+        ) == None
+
+def test_get_image_filename(single_image_i):
+    """
+    Check if the method returns filename obtained from the direct image url.
+    """
+    assert single_image_i.get_image_filename(single_image_i.url) == '0s7mWKz.jpg'
