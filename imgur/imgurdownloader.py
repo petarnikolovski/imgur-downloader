@@ -75,4 +75,7 @@ class ImgurDownloader(object):
         """
         Append ?grid to url.
         """
-        pass
+        if self.is_it_album():
+            if not self.is_it_grid():
+                return ''.join([self.change_gallery(), '?grid'])
+        raise ImgurException('Cannot convert single image into album grid.')

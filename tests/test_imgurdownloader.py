@@ -135,3 +135,10 @@ def test_turn_album_into_grid(album_gallery, album_a, album_grid):
     """
     assert album_gallery.turn_into_grid() == album_grid.url
     assert album_a.turn_into_grid() == album_grid.url
+
+def test_raise_exception_turn_into_grid(single_image_i):
+    """
+    Raise exception if the provided link cannot be turned into grid.
+    """
+    with pytest.raises(ImgurException):
+        single_image_i.turn_into_grid()
