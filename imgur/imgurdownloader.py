@@ -7,6 +7,8 @@ TODO: >add docstring<
 
 
 import re
+from collections import deque
+from url.request import urlopen
 
 
 class ImgurException(Exception):
@@ -27,6 +29,7 @@ class ImgurDownloader(object):
         Initiate ImgurDownloader object.
         """
         self.url = self.sanitize(url)
+        self.images = deque()
 
     def sanitize(self, url):
         """
