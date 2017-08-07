@@ -140,3 +140,9 @@ class ImgurDownloader(object):
         extension = self.contains_extension(url)
         pattern = ''.join(['.+\\', extension])
         return re.match(pattern, candidate).group(0)
+
+    def pack_image(self, url, filename):
+        """
+        Returns a dictionary with image url and corresponding filename.
+        """
+        return {'url' : url, 'filename' : filename}
