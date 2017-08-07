@@ -187,9 +187,12 @@ def test_get_image_filename(single_image_i):
     """
     assert single_image_i.get_image_filename(single_image_i.url) == '0s7mWKz.jpg'
 
-def test_duplicates(single_image_without_extension):
+def test_duplicates(single_image_without_extension, album_gallery):
     """
     Remove duplicates from matches returned from regex.
     """
-    candidate = [('0s7mWKz', '.jpg'), ('0s7mWKz', '.jpg')]
-    assert single_image_without_extension.remove_duplicates(candidate) == [('0s7mWKz', '.jpg')]
+    candidate_1 = [('0s7mWKz', '.jpg'), ('0s7mWKz', '.jpg')]
+    candidate_2 = [('0s7mWKz', '.jpg'), ('lciC5G8', '.jpg'),
+                   ('0s7mWKz', '.jpg'), ('lciC5G8', '.jpg')]
+    assert single_image_without_extension.remove_duplicates(candidate_1) == [('0s7mWKz', '.jpg')]
+    assert album_gallery.remove_duplicates(candidate_2) == [('0s7mWKz', '.jpg'), ('lciC5G8', '.jpg')]

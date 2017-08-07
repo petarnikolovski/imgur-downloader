@@ -8,6 +8,7 @@ TODO: >add docstring<
 
 import re
 from collections import deque
+from itertools import groupby
 from urllib.request import urlopen
 from imgur.fileformats import FileFormats
 
@@ -142,7 +143,11 @@ class ImgurDownloader(object):
         Remove duplicates from a list of tuples containing filenames with
         extensions.
         """
-        pass
+        clean = []
+        filenames.sort()
+        for key, group in groupby(filenames):
+            clean.append(key)
+        return clean
 
     def contains_extension(self, url):
         """
