@@ -160,7 +160,7 @@ class ImgurDownloader(object):
         """
         pattern = '\{.*?"hash":"([a-zA-Z0-9]+)".*?"ext":"([\.a-zA-Z0-9]+)".*?\}'
         try:
-            html = urlopen(url).read()
+            html = urlopen(url).read().decode('utf-8')
             filenames_with_duplicates = re.findall(pattern, html)
             filenames_clean = self.remove_duplicates(filenames_with_duplicates)
             urls = build_image_url_list(filenames_clean)
