@@ -118,3 +118,13 @@ class ImgurDownloader(object):
             pass
         # if not image, then it is gallery
         grid = self.url.turn_into_grid()
+
+    def contains_extension(self):
+        """
+        Check if the image url contains extension. If there is an extension it
+        is returned. Otherwise, None is returned.
+        """
+        for extension in ImgurFileFormats.FILEFORMATS:
+            if extension in self.url:
+                return extension
+        return None

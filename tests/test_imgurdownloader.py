@@ -171,3 +171,10 @@ def test_get_images(album_gallery):
     })
     album_gallery.get_images()
     assert album_gallery.images == result
+
+def test_contains_extension(single_image_i, single_image_without_extension):
+    """
+    Check if the extension is contained in image url.
+    """
+    assert single_image_i.contains_extension() == '.jpg'
+    assert single_image_without_extension.contains_extension() == None
