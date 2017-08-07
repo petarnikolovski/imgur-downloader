@@ -186,3 +186,10 @@ def test_get_image_filename(single_image_i):
     Check if the method returns filename obtained from the direct image url.
     """
     assert single_image_i.get_image_filename(single_image_i.url) == '0s7mWKz.jpg'
+
+def test_duplicates(single_image_without_extension):
+    """
+    Remove duplicates from matches returned from regex.
+    """
+    candidate = [('0s7mWKz', '.jpg'), ('0s7mWKz', '.jpg')]
+    assert single_image_without_extension.remove_duplicates(candidate) == [('0s7mWKz', '.jpg')]
