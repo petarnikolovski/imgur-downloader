@@ -95,13 +95,13 @@ def test_is_it_image_album_gallery(album_gallery):
     """
     assert album_gallery.is_it_image() == False
 
-def test_is_it_album_image_without_extension_i(album_a):
+def test_is_it_album_a(album_a):
     """
     Test if the provided URL leads to an image or album.
     """
     assert album_a.is_it_album() == True
 
-def test_is_it_album_image_without_extension(album_gallery):
+def test_is_it_album_gallery(album_gallery):
     """
     Test if the provided URL leads to an image or album.
     """
