@@ -114,7 +114,6 @@ class ImgurDownloader(object):
         Parses HTML from the provided url to obtain link(s) to image(s). Raises
         exception if the link already ends with an extension.
         """
-        #pattern = 'https*\:\/\/i\.imgur\.com\/[a-zA-Z0-9]+\.[a-zA-Z]{1,4}'
         pattern = '\{.*?"hash":"([a-zA-Z0-9]+)".*?"ext":"([\.a-zA-Z0-9]+)".*?\}'
         if self.url.is_it_image():
             if self.contains_extension(self.url):
@@ -123,20 +122,29 @@ class ImgurDownloader(object):
                     )
                 return
             else:
-                try:
-                    html = urlopen(self.url).read()
-                    filenames_with_duplicates = re.findall(pattern, html)
-                    filenames_clean = self.remove_duplicates(filenames_with_duplicates)
-
-                except HTTPError as e:
-                    print(e.status)
-                except URLError as e:
-                    print(e.reason)
-
+                self.parse_and_get_images(self.url)
                 return
-        # if not image, then it is gallery
         grid = self.url.turn_into_grid()
+        self.parse_and_get_images(grid)
         return
+
+    def parse_and_get_images(self, url):
+        """
+        Obtain and parse html, and append image dictionaries to image deque.
+        """
+        try:
+            html = urlopen(url).read()
+            filenames_with_duplicates = re.findall(pattern, html)
+            filenames_clean = self.remove_duplicates(filenames_with_duplicates)
+            urls = build_image_url_list(filenames_clean)
+            for url in urls:
+                self.images.append(
+                    pack_image(url, self.get_image_filename(url))
+                )
+        except HTTPError as e:
+            print(e.status)
+        except URLError as e:
+            print(e.reason)
 
     def build_image_url_list(self, filenames):
         """
