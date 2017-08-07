@@ -35,6 +35,8 @@ import re
 from collections import deque
 from itertools import groupby
 from urllib.request import urlopen
+from urllib.error import HTTPError
+from urllib.error import URLError
 from imgur.fileformats import FileFormats
 
 
