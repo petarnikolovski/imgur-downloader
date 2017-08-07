@@ -9,6 +9,7 @@ TODO: >add docstring<
 import re
 from collections import deque
 from urllib.request import urlopen
+from imgur.fileformats import FileFormats
 
 
 class ImgurException(Exception):
@@ -16,6 +17,28 @@ class ImgurException(Exception):
     This exception is raised if supplied link is invalid.
     """
     pass
+
+
+class ImgurFileFormats(object):
+    """
+    Contains extensions for file formats that are allowed on imgur. Source:
+
+    https://help.imgur.com/hc/en-us/articles/115000083326-What-files-can-I-upload-
+
+    Archived:
+    http://archive.is/89Uky
+    https://web.archive.org/web/20170222111303/https://help.imgur.com/hc/en-us/articles/115000083326-What-files-can-I-upload-
+    """
+    FILEFORMATS = (
+        FileFormats.JPG,
+        FileFormats.JPEG,
+        FileFormats.PNG,
+        FileFormats.GIF,
+        FileFormats.APNG,
+        FileFormats.TIFF,
+        FileFormats.PDF,
+        FileFormats.XCF,
+    )
 
 
 class ImgurDownloader(object):
@@ -88,5 +111,4 @@ class ImgurDownloader(object):
         Parses HTML from the provided url to obtain link(s) to image(s). Raises
         exception if the link already ends with an extension.
         """
-        # https*\:\/\/i\.imgur\.com\/[a-zA-Z0-9]+\.[a-zA-Z]{1,4}
-        pass
+        pattern = 'https*\:\/\/i\.imgur\.com\/[a-zA-Z0-9]+\.[a-zA-Z]{1,4}'
