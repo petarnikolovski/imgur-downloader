@@ -149,7 +149,7 @@ class ImgurDownloader(object):
             else:
                 self.parse_and_get_images(self.url)
                 return
-        grid = self.url.turn_into_grid()
+        grid = self.turn_into_grid()
         self.parse_and_get_images(grid)
         return
 
