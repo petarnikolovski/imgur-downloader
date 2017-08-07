@@ -141,7 +141,6 @@ class ImgurDownloader(object):
         Parses HTML from the provided url to obtain link(s) to image(s). Raises
         exception if the link already ends with an extension.
         """
-        pattern = '\{.*?"hash":"([a-zA-Z0-9]+)".*?"ext":"([\.a-zA-Z0-9]+)".*?\}'
         if self.is_it_image():
             if self.contains_extension(self.url):
                 self.images.append(
@@ -159,6 +158,7 @@ class ImgurDownloader(object):
         """
         Obtain and parse html, and append image dictionaries to image deque.
         """
+        pattern = '\{.*?"hash":"([a-zA-Z0-9]+)".*?"ext":"([\.a-zA-Z0-9]+)".*?\}'
         try:
             html = urlopen(url).read()
             filenames_with_duplicates = re.findall(pattern, html)
