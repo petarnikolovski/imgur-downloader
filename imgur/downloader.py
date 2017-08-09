@@ -57,10 +57,10 @@ class Downloader(object):
         while images:
             image = images.popleft()
 
-            if verbose: display_status(image['url'], currently_at, total)
+            if verbose: self.display_status(image['url'], currently_at, total)
 
             try:
-                write_file_to_filesystem(image['url'], image['filename'])
+                self.write_file_to_filesystem(image['url'], image['filename'])
             except HTTPError as e:
                 if verbose:
                     print('Could not download, error status:', e.code)
@@ -81,3 +81,14 @@ class Downloader(object):
         if os.path.exists(path):
             return path
         raise DownloaderException('Destination directory does not exist.')
+
+    def display_status(self, url, currently_at, total):
+        """
+        Display the link of the image which is being downloaded, and download
+        progress.
+        """
+        print(
+            'Progress: {}/{}.\tDownloading: {}'.format(
+                currently_at, total, url
+            )
+        )
