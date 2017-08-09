@@ -3,7 +3,7 @@
 
 """
 Imgur Downloader downloads single images or albums from imgur.com. These are types
-of links that are allowed as input to the app:
+of links that are allowed as input:
 
 ~ http(s)://i.imgur.com/[image_hash].[extension]
 ~ http(s)://i.imgur.com/[image_hash]
@@ -11,7 +11,7 @@ of links that are allowed as input to the app:
 ~ http(s)://imgur.com/a/[album_hash]
 ~ http(s)://imgur.com/gallery/[album_hash]
 
-How to use app? Here is the example:
+How to use app? Here is an example:
 
 python3 crawlgur.py -v https://imgur.com/a/album_id /path/to/directory
 """
@@ -20,6 +20,7 @@ python3 crawlgur.py -v https://imgur.com/a/album_id /path/to/directory
 from argparse import ArgumentParser
 from imgur.imgurdownloader import Imgur
 from imgur.downloader import Downloader
+
 
 def parse_arguments():
     """
