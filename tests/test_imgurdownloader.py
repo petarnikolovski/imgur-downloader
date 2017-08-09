@@ -3,54 +3,54 @@
 
 import pytest
 from collections import deque
-from imgur.imgurdownloader import ImgurDownloader
+from imgur.imgurdownloader import Imgur
 from imgur.imgurdownloader import ImgurException
 
 
 @pytest.fixture
 def single_image_i():
-    return ImgurDownloader('http://i.imgur.com/jedEzFL.jpg')
+    return Imgur('http://i.imgur.com/jedEzFL.jpg')
 
 @pytest.fixture
 def single_image_without_extension_i():
-    return ImgurDownloader('http://i.imgur.com/jedEzFL')
+    return Imgur('http://i.imgur.com/jedEzFL')
 
 @pytest.fixture
 def single_image_without_extension():
-    return ImgurDownloader('http://imgur.com/jedEzFL')
+    return Imgur('http://imgur.com/jedEzFL')
 
 @pytest.fixture
 def album_a():
-    return ImgurDownloader('http://imgur.com/a/vTTHZ')
+    return Imgur('http://imgur.com/a/vTTHZ')
 
 @pytest.fixture
 def album_grid():
-    return ImgurDownloader('http://imgur.com/a/vTTHZ?grid')
+    return Imgur('http://imgur.com/a/vTTHZ?grid')
 
 @pytest.fixture
 def album_gallery():
-    return ImgurDownloader('http://imgur.com/gallery/vTTHZ')
+    return Imgur('http://imgur.com/gallery/vTTHZ')
 
 def test_invalid_link():
     """
     Test if the class raises exception for invalid link.
     """
     with pytest.raises(ImgurException):
-        ImgurDownloader('https://www.reddit.com')
+        Imgur('https://www.reddit.com')
 
 def test_invalid_link_with_variation():
     """
     Test if the class raises exception for invalid link.
     """
     with pytest.raises(ImgurException):
-        ImgurDownloader('https://www.reddit.com/imgur.com')
+        Imgur('https://www.reddit.com/imgur.com')
 
 def test_invalid_link_almost_correct():
     """
     Test if the class raises exception for invalid link.
     """
     with pytest.raises(ImgurException):
-        ImgurDownloader('http://.iimgur.com/jedEzFL')
+        Imgur('http://.iimgur.com/jedEzFL')
 
 def test_is_it_image_with_extension(single_image_i):
     """
@@ -154,7 +154,7 @@ def test_get_image(single_image_without_extension):
         'url' : 'http://i.imgur.com/jedEzFL.jpg',
         'filename' : 'jedEzFL.jpg',
     })
-    single_image_without_extension.get_images()
+    single_image_without_extension.prepare_images()
     assert single_image_without_extension.images == result
 
 @pytest.mark.skip(reason='no way of currently testing this')
@@ -169,7 +169,7 @@ def test_get_images(album_gallery):
         'url' : 'http://i.imgur.com/6O1hqeY.jpg',
         'filename' : '6O1hqeY.jpg',
     })
-    album_gallery.get_images()
+    album_gallery.prepare_images()
     assert album_gallery.images == result
 
 def test_contains_extension(single_image_i, single_image_without_extension):

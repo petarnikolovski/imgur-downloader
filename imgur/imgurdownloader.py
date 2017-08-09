@@ -68,7 +68,7 @@ class ImgurFileFormats(object):
     )
 
 
-class ImgurDownloader(object):
+class Imgur(object):
     """
     ImgurDownloader contains all necessary methods to extract image or
     album images from imgur link.
@@ -135,7 +135,7 @@ class ImgurDownloader(object):
                 return self.url
         raise ImgurException('Cannot convert single image into album grid.')
 
-    def get_images(self):
+    def prepare_images(self):
         """
         Parses HTML from the provided url to obtain link(s) to image(s). Raises
         exception if the link already ends with an extension.
@@ -147,13 +147,13 @@ class ImgurDownloader(object):
                     )
                 return
             else:
-                self.parse_and_get_images(self.url)
+                self.parse_and_prepare_images(self.url)
                 return
         grid = self.turn_into_grid()
-        self.parse_and_get_images(grid)
+        self.parse_and_prepare_images(grid)
         return
 
-    def parse_and_get_images(self, url):
+    def parse_and_prepare_images(self, url):
         """
         Obtain and parse html, and append image dictionaries to image deque.
         """
