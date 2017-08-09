@@ -55,19 +55,19 @@ class Downloader(object):
         os.chdir(self.destination)
 
         currently_at = 1
-        total = len(images)
-        while images:
-            image = images.popleft()
+        total = len(self.images)
+        while self.images:
+            image = self.images.popleft()
 
-            if verbose: self.display_status(image['url'], currently_at, total)
+            if self.verbose: self.display_status(image['url'], currently_at, total)
 
             try:
                 self.write_file_to_filesystem(image['url'], image['filename'])
             except HTTPError as e:
-                if verbose:
+                if self.verbose:
                     print('Could not download, error status:', e.code)
             except URLError as e:
-                if verbose:
+                if self.verbose:
                     print('Something went wrong:', e.reason)
 
             currently_at += 1

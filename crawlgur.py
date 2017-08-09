@@ -18,7 +18,8 @@ python3 crawlgur.py -v https://imgur.com/a/album_id /path/to/directory
 
 
 from argparse import ArgumentParser
-
+from imgur.imgurdownloader import Imgur
+from imgur.downloader import Downloader
 
 def parse_arguments():
     """
@@ -40,4 +41,9 @@ def parse_arguments():
 if __name__ == '__main__':
     verbose, url, destination = parse_arguments()
 
-    print(verbose, url, destination)
+    imgur = Imgur(url)
+    imgur.prepare_images()
+    imgur.numerate_images()
+
+    downloader = Downloader(imgur.images, destination, verbose)
+    downloader.download()
