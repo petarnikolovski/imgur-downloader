@@ -2,8 +2,7 @@
 
 
 """
-Download images from imgur. Use this in combination with Imgur class.
-Example:
+Download images from imgur. Use this in combination with Imgur class. Example:
 
 ```python3
 from imgur.imgurdownloader Import Imgur
@@ -11,6 +10,9 @@ from imgur.imgurdownloader Import Imgur
 imgur = Imgur('http(s)://imgur.com/[album_hash]')
 imgur.prepare_images()
 imgur.numerate_images()
+
+downloader = Downloader(imgur.images, '/home/user/Download')
+downloader.download()
 ```
 """
 
