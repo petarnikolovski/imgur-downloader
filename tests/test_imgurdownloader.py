@@ -9,15 +9,15 @@ from imgur.imgurdownloader import ImgurException
 
 @pytest.fixture
 def single_image_i():
-    return ImgurDownloader('http://i.imgur.com/0s7mWKz.jpg')
+    return ImgurDownloader('http://i.imgur.com/jedEzFL.jpg')
 
 @pytest.fixture
 def single_image_without_extension_i():
-    return ImgurDownloader('http://i.imgur.com/0s7mWKz')
+    return ImgurDownloader('http://i.imgur.com/jedEzFL')
 
 @pytest.fixture
 def single_image_without_extension():
-    return ImgurDownloader('http://imgur.com/0s7mWKz')
+    return ImgurDownloader('http://imgur.com/jedEzFL')
 
 @pytest.fixture
 def album_a():
@@ -50,7 +50,7 @@ def test_invalid_link_almost_correct():
     Test if the class raises exception for invalid link.
     """
     with pytest.raises(ImgurException):
-        ImgurDownloader('http://.iimgur.com/0s7mWKz')
+        ImgurDownloader('http://.iimgur.com/jedEzFL')
 
 def test_is_it_image_with_extension(single_image_i):
     """
@@ -151,8 +151,8 @@ def test_get_image(single_image_without_extension):
     Get a direct link to a single image.
     """
     result = deque({
-        'url' : 'http://i.imgur.com/0s7mWKz.jpg',
-        'filename' : '0s7mWKz.jpg',
+        'url' : 'http://i.imgur.com/jedEzFL.jpg',
+        'filename' : 'jedEzFL.jpg',
     })
     single_image_without_extension.get_images()
     assert single_image_without_extension.images == result
@@ -185,24 +185,24 @@ def test_get_image_filename(single_image_i):
     """
     Check if the method returns filename obtained from the direct image url.
     """
-    assert single_image_i.get_image_filename(single_image_i.url) == '0s7mWKz.jpg'
+    assert single_image_i.get_image_filename(single_image_i.url) == 'jedEzFL.jpg'
 
 def test_duplicates(single_image_without_extension, album_gallery):
     """
     Remove duplicates from matches returned from regex.
     """
-    candidate_1 = [('0s7mWKz', '.jpg'), ('0s7mWKz', '.jpg')]
-    candidate_2 = [('0s7mWKz', '.jpg'), ('lciC5G8', '.jpg'),
-                   ('0s7mWKz', '.jpg'), ('lciC5G8', '.jpg')]
-    assert single_image_without_extension.remove_duplicates(candidate_1) == [('0s7mWKz', '.jpg')]
-    assert album_gallery.remove_duplicates(candidate_2) == [('0s7mWKz', '.jpg'), ('lciC5G8', '.jpg')]
+    candidate_1 = [('jedEzFL', '.jpg'), ('jedEzFL', '.jpg')]
+    candidate_2 = [('jedEzFL', '.jpg'), ('lciC5G8', '.jpg'),
+                   ('jedEzFL', '.jpg'), ('lciC5G8', '.jpg')]
+    assert single_image_without_extension.remove_duplicates(candidate_1) == [('jedEzFL', '.jpg')]
+    assert album_gallery.remove_duplicates(candidate_2) == [('jedEzFL', '.jpg'), ('lciC5G8', '.jpg')]
 
 def test_build_image_links(album_gallery):
     """
     Test if the input list of filename tuples returns direct links to images.
     """
-    candidate = [('0s7mWKz', '.jpg'), ('lciC5G8', '.jpg')]
-    result = ['https://i.imgur.com/0s7mWKz.jpg', 'https://i.imgur.com/lciC5G8.jpg']
+    candidate = [('jedEzFL', '.jpg'), ('lciC5G8', '.jpg')]
+    result = ['https://i.imgur.com/jedEzFL.jpg', 'https://i.imgur.com/lciC5G8.jpg']
     assert album_gallery.build_image_url_list(candidate) == result
 
 def test_number_of_images(album_gallery):

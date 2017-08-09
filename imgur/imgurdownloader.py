@@ -176,9 +176,9 @@ class ImgurDownloader(object):
     def build_image_url_list(self, filenames):
         """
         Build list of direct links to images. Input filenames list is a list of
-        tuples e.g. [('0s7mWKz', '.jpg'), ('lciC5G8', '.jpg')]. The output looks
+        tuples e.g. [('jedEzFL', '.jpg'), ('lciC5G8', '.jpg')]. The output looks
         like:
-        ['https://i.imgur.com/0s7mWKz.jpg', 'https://i.imgur.com/lciC5G8.jpg']
+        ['https://i.imgur.com/jedEzFL.jpg', 'https://i.imgur.com/lciC5G8.jpg']
         """
         urls = []
         for filename, extension in filenames:
@@ -210,8 +210,8 @@ class ImgurDownloader(object):
         """
         Get image file name from its url. Examples:
 
-        https://i.imgur.com/0s7mWKz.jpg     ->  0s7mWKz.jpg
-        https://i.imgur.com/0s7mWKz.jpg?1   ->  0s7mWKz.jpg
+        https://i.imgur.com/jedEzFL.jpg     ->  0s7mWKz.jpg
+        https://i.imgur.com/jedEzFL.jpg?1   ->  0s7mWKz.jpg
         """
         candidate = url.split('/')[-1]
         extension = self.contains_extension(url)
