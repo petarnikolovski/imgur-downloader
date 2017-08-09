@@ -2,7 +2,18 @@
 
 
 """
-TODO: Add >how to<
+Imgur Downloader downloads single images or albums from imgur.com. These are types
+of links that are allowed as input to the app:
+
+~ http(s)://i.imgur.com/[image_hash].[extension]
+~ http(s)://i.imgur.com/[image_hash]
+~ http(s)://imgur.com/[image_hash]
+~ http(s)://imgur.com/a/[album_hash]
+~ http(s)://imgur.com/gallery/[album_hash]
+
+How to use app? Here is the example:
+
+python3 crawlgur.py -v https://imgur.com/a/album_id /path/to/directory
 """
 
 
