@@ -78,13 +78,13 @@ class ImgurFileFormats(object):
 
 class Imgur(object):
     """
-    ImgurDownloader contains all necessary methods to extract image or
-    album images from imgur link.
+    Imgur contains all necessary methods to extract image or album images from
+    imgur link.
     """
 
     def __init__(self, url):
         """
-        Initiate ImgurDownloader object.
+        Initiate Imgur object.
         """
         self.url = self.sanitize(url)
         self.images = deque()
