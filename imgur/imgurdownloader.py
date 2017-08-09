@@ -9,13 +9,12 @@ classes:
 ~ ImgurFileFormats
 ~ ImgurDownloader
 
-ImgurDownloader is the main class. Contrary to its name, it does not download
-anything, but it obtains list of direct image urls that could be used to download
-images. Example usage:
+Imgur is the main class and it obtains list of direct image urls that could be
+used to download images. Example usage:
 
 ```python3
-imgur = ImgurDownloader('http://imgur.com/gallery/vTTHZ')
-imgur.get_images()
+imgur = Imgur('http://imgur.com/gallery/vTTHZ')
+imgur.prepare_images()
 images = imgur.images
 ```
 
@@ -26,8 +25,17 @@ for image in images:
     print(image['url'], image['filename'])
 ```
 
-TODO: Rename get_images to prepare_images, it makes more sense. And rename
-      ImgurDownloader simply to Imgur.
+If images need to be downloaded in order they appear in an album, their filenames
+have to be numerated. Full examples:
+
+```python3
+imgur = Imgur('http://imgur.com/gallery/vTTHZ')
+imgur.prepare_images()
+imgur.images # These are not guaranteed to appear in order when downloaded
+
+imgur.numerate_images()
+images = imgur.images
+```
 """
 
 
@@ -228,3 +236,20 @@ class Imgur(object):
         Get the number of images from the images attribute.
         """
         return len(self.images)
+
+    def numerate_images(self):
+        """
+        Append ordinal number to image filename.
+        """
+        total = self.digits_in_a_number(len(self.images))
+        ordinal = '{0:0%dd}' % total
+        for index, image in enumerate(self.images, start=1):
+            image['filename'] = ''.join([
+                    ordinal.format(index), '-', image['filename']
+                ])
+
+    def digits_in_a_number(self, number):
+        """
+        Return how many digits are there in a number.
+        """
+        return len(str(number))

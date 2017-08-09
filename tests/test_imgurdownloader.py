@@ -210,3 +210,28 @@ def test_number_of_images(album_gallery):
     Test the number of images contained in 'images' attribute.
     """
     assert album_gallery.number_of_images() == 0
+
+def test_check_ordering(album_gallery):
+    """
+    Check if the image filenames have appended ordinal numbers.
+    """
+    candidates = deque([
+        {'url' : 'https://i.imgur.com/jedEzFL.jpg', 'filename' : 'jedEzFL.jpg',},
+        {'url' : 'https://i.imgur.com/lciC5G8.jpg', 'filename' : 'lciC5G8.jpg',},
+    ])
+    result = deque([
+        {'url' : 'https://i.imgur.com/jedEzFL.jpg', 'filename' : '1-jedEzFL.jpg',},
+        {'url' : 'https://i.imgur.com/lciC5G8.jpg', 'filename' : '2-lciC5G8.jpg',},
+    ])
+
+    album_gallery.images = candidates
+    album_gallery.numerate_images()
+    assert album_gallery.images == result
+
+def test_digits_in_a_number(album_gallery):
+    """
+    Test to see how many digits are there in an album.
+    """
+    assert album_gallery.digits_in_a_number(7) == 1
+    assert album_gallery.digits_in_a_number(12) == 2
+    assert album_gallery.digits_in_a_number(1454) == 4
