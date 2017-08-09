@@ -33,7 +33,6 @@ TODO: Rename get_images to prepare_images, it makes more sense. And rename
 
 import re
 from collections import deque
-from itertools import groupby
 from urllib.request import urlopen
 from urllib.error import HTTPError
 from urllib.error import URLError
@@ -191,9 +190,9 @@ class ImgurDownloader(object):
         extensions.
         """
         clean = []
-        filenames.sort()
-        for key, group in groupby(filenames):
-            clean.append(key)
+        for filename in filenames:
+            if filename not in clean:
+                clean.append(filename)
         return clean
 
     def contains_extension(self, url):
