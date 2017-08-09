@@ -92,3 +92,10 @@ class Downloader(object):
                 currently_at, total, url
             )
         )
+
+    def write_file_to_filesystem(self, url, filename):
+        """
+        Write a file to a file system.
+        """
+        with urlopen(url) as r, open(filename, 'wb') as f:
+            copyfileobj(r, f)
