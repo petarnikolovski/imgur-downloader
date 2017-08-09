@@ -165,7 +165,7 @@ class Imgur(object):
         """
         Obtain and parse html, and append image dictionaries to image deque.
         """
-        pattern = '\{.*?"hash":"([a-zA-Z0-9]+)".*?"ext":"([\.a-zA-Z0-9]+)".*?\}'
+        pattern = '\{"hash":"([a-zA-Z0-9]+)".*?"ext":"([\.a-zA-Z0-9]+)".*?\}'
         try:
             html = urlopen(url).read().decode('utf-8')
             filenames_with_duplicates = re.findall(pattern, html)
