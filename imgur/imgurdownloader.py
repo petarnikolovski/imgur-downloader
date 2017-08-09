@@ -210,8 +210,8 @@ class ImgurDownloader(object):
         """
         Get image file name from its url. Examples:
 
-        https://i.imgur.com/jedEzFL.jpg     ->  0s7mWKz.jpg
-        https://i.imgur.com/jedEzFL.jpg?1   ->  0s7mWKz.jpg
+        https://i.imgur.com/jedEzFL.jpg     ->  jedEzFL.jpg
+        https://i.imgur.com/jedEzFL.jpg?1   ->  jedEzFL.jpg
         """
         candidate = url.split('/')[-1]
         extension = self.contains_extension(url)
