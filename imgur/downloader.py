@@ -52,6 +52,25 @@ class Downloader(object):
         """
         os.chdir(self.destination)
 
+        currently_at = 1
+        total = len(images)
+        while images:
+            image = images.popleft()
+
+            if verbose: display_status(image['url'], currently_at, total)
+
+            try:
+                write_file_to_filesystem(image['url'], image['filename'])
+            except HTTPError as e:
+                if verbose:
+                    print('Could not download, error status:', e.code)
+            except URLError as e:
+                if verbose:
+                    print('Something went wrong:', e.reason)
+
+            currently_at += 1
+            sleep(2)
+
         os.chdir(self.current_directory)
 
     def is_valid_path(self, path):
