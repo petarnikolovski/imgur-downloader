@@ -12,8 +12,3 @@ pip-selfcheck.json
 [Ii]nclude
 [Ll]ib
 [Ll]ib64
-
-# Ignore selenium related files
-*driver.log
-selenium/
-screenshot.png
