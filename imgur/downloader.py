@@ -25,6 +25,10 @@ from shutil import copyfileobj
 from time import sleep
 
 
+__version__ = 'v0.2'
+__status__ = 'Development'
+
+
 class DownloaderException(Exception):
     """
     Raise this exception if there is something wrong with supplied path or with

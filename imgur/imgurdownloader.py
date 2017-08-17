@@ -7,7 +7,7 @@ classes:
 
 ~ ImgurException
 ~ ImgurFileFormats
-~ ImgurDownloader
+~ Imgur
 
 Imgur is the main class and it obtains list of direct image urls that could be
 used to download images. Example usage:
@@ -45,6 +45,10 @@ from urllib.request import urlopen
 from urllib.error import HTTPError
 from urllib.error import URLError
 from imgur.fileformats import FileFormats
+
+
+__version__ = 'v0.2'
+__status__ = 'Development'
 
 
 class ImgurException(Exception):

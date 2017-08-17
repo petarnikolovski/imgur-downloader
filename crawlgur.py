@@ -22,6 +22,10 @@ from imgur.imgurdownloader import Imgur
 from imgur.downloader import Downloader
 
 
+__version__ = 'v0.2'
+__status__ = 'Development'
+
+
 def parse_arguments():
     """
     Parse input arguments of the program.
