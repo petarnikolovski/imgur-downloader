@@ -68,16 +68,30 @@ class ImgurFileFormats(object):
     http://archive.is/89Uky
     https://web.archive.org/web/20170222111303/https://help.imgur.com/hc/en-us/articles/115000083326-What-files-can-I-upload-
     """
-    FILEFORMATS = (
-        FileFormats.JPG,
-        FileFormats.JPEG,
-        FileFormats.PNG,
-        FileFormats.GIF,
-        FileFormats.APNG,
-        FileFormats.TIFF,
-        FileFormats.PDF,
-        FileFormats.XCF,
-    )
+    JPG = '.jpg'
+    JPEG = '.jpeg'
+    PNG = '.png'
+    GIF = '.gif'
+    APNG = '.apng'
+    TIFF = '.tiff'
+    PDF = '.pdf'
+    XCF = '.xcf'
+    #WEBM = '.webm'
+    #MP4 = '.mp4'
+
+    @classmethod
+    def formats(cls):
+        """
+        Return a set consisting of all class attributes. Class attributes must
+        not be callable.
+        """
+        formats = set()
+        for attribute in ImgurFileFormats.__dict__.keys():
+            if attribute[:2] != '__':
+                value = getattr(ImgurFileFormats, attribute)
+                if not callable(value):
+                    formats.add(value)
+        return formats
 
 
 class Imgur(object):
@@ -212,7 +226,7 @@ class Imgur(object):
         Check if the image url contains extension. If there is an extension it
         is returned. Otherwise, None is returned.
         """
-        for extension in ImgurFileFormats.FILEFORMATS:
+        for extension in ImgurFileFormats.formats():
             if extension in url:
                 return extension
         return None
