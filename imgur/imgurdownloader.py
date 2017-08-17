@@ -44,7 +44,6 @@ from collections import deque
 from urllib.request import urlopen
 from urllib.error import HTTPError
 from urllib.error import URLError
-from imgur.fileformats import FileFormats
 
 
 __version__ = 'v0.2'
