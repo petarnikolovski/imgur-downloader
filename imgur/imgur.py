@@ -113,7 +113,7 @@ class Imgur(object):
         """
         if re.match('https?\:\/\/(i\.)?imgur\.com\/', url):
             if self.is_it_gifv(url):
-                return sanitize_gifv(url)
+                return self.sanitize_gifv(url)
             return url
         raise ImgurException('Invalid link.')
 
