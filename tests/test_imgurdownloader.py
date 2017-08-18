@@ -256,3 +256,13 @@ def test_if_link_contains_gifv(single_image_i):
     assert single_image_i.is_it_gifv(url_2) == False
     assert single_image_i.is_it_gifv(url_3) == True
     assert single_image_i.is_it_gifv(url_4) == True
+
+def test_sanitize_gifv(single_image_i):
+    """
+    Test if sanitize_gifv method returns a proper link to a gif.
+    """
+    url_1 = 'http://i.imgur.com/jedEzFL.gifv'
+    url_2 = 'http://i.imgur.com/jedEzFL.gifv?1'
+    result = 'http://i.imgur.com/jedEzFL.gif'
+    assert single_image_i.sanitize_gifv(url_1) == result
+    assert single_image_i.sanitize_gifv(url_2) == result
