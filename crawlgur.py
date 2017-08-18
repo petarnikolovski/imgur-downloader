@@ -18,7 +18,7 @@ python3 crawlgur.py -v https://imgur.com/a/album_id /path/to/directory
 
 
 from argparse import ArgumentParser
-from imgur.imgurdownloader import Imgur
+from imgur.imgur import Imgur
 from imgur.downloader import Downloader
 
 

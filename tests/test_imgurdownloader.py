@@ -3,8 +3,8 @@
 
 import pytest
 from collections import deque
-from imgur.imgurdownloader import Imgur
-from imgur.imgurdownloader import ImgurException
+from imgur.imgur import Imgur
+from imgur.imgur import ImgurException
 
 
 @pytest.fixture
@@ -242,3 +242,17 @@ def test_digits_in_a_number(album_gallery):
     assert album_gallery.digits_in_a_number(7) == 1
     assert album_gallery.digits_in_a_number(12) == 2
     assert album_gallery.digits_in_a_number(1454) == 4
+
+def test_if_link_contains_gifv(single_image_i):
+    """
+    Test if the provided link contains .gifv extension.
+    """
+    url_1 = 'http://i.imgur.com/jedEzFL.gif'
+    url_2 = 'http://i.imgur.com/jedEzFL.giv'
+    url_3 = 'http://i.imgur.com/jedEzFL.gifv'
+    url_4 = 'http://i.imgur.com/jedEzFL.gifv?1'
+    assert single_image_i.is_it_gifv(single_image_i.url) == False
+    assert single_image_i.is_it_gifv(url_1) == False
+    assert single_image_i.is_it_gifv(url_2) == False
+    assert single_image_i.is_it_gifv(url_3) == True
+    assert single_image_i.is_it_gifv(url_4) == True

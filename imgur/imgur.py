@@ -115,6 +115,14 @@ class Imgur(object):
             return url
         raise ImgurException('Invalid link.')
 
+    def is_it_gifv(self, url):
+        """
+        Check if the supplied link points to .gifv page.
+        """
+        if '.gifv' in url:
+            return True
+        return False
+
     def is_it_image(self):
         """
         Check if the url points to image. Examples:
