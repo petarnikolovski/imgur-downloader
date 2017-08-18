@@ -94,7 +94,7 @@ class Downloader(object):
         progress.
         """
         print(
-            'Progress: {}/{}.\tDownloading: {}'.format(
+            'Progress: {}/{}. Downloading: {}'.format(
                 currently_at, total, url
             )
         )
