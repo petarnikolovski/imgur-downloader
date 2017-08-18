@@ -52,6 +52,13 @@ def test_invalid_link_almost_correct():
     with pytest.raises(ImgurException):
         Imgur('http://.iimgur.com/jedEzFL')
 
+def test_invalid_link_with_multiple_s():
+    """
+    Test if the class raises exception for invalid link.
+    """
+    with pytest.raises(ImgurException):
+        Imgur('httpssssss://i.imgur.com/jedEzFL')
+
 def test_is_it_image_with_extension(single_image_i):
     """
     Test if the provided URL leads to an image or album.
