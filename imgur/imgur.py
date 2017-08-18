@@ -111,7 +111,7 @@ class Imgur(object):
         Check if the supplied link is valid. If not, raise ImgurException. This
         method checks only if the domain is valid.
         """
-        if re.match('https?\:\/\/(i\.)?imgur\.com\/', url):
+        if re.match('https?\:\/\/(i\.|www\.)?imgur\.com\/', url):
             if self.is_it_gifv(url):
                 return self.sanitize_gifv(url)
             return url

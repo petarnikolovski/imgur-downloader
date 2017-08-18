@@ -59,6 +59,16 @@ def test_invalid_link_with_multiple_s():
     with pytest.raises(ImgurException):
         Imgur('httpssssss://i.imgur.com/jedEzFL')
 
+def test_valid_with_www():
+    """
+    Test if the input link containing www.imgur.com does not
+    raise exception.
+    """
+    try:
+        Imgur('http://www.imgur.com/jedEzFL')
+    except ImgurException:
+        pytest.fail('Exception raised, but not expected.')
+
 def test_is_it_image_with_extension(single_image_i):
     """
     Test if the provided URL leads to an image or album.
