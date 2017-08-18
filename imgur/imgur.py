@@ -121,7 +121,8 @@ class Imgur(object):
         """
         Remove 'v' from .gifv
         """
-        pass
+        pattern = 'https?\:\/\/i\.imgur\.com\/[a-zA-Z0-9]+\.gif'
+        return re.match(pattern, url).group(0)
 
     def is_it_gifv(self, url):
         """
