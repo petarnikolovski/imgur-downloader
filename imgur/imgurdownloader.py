@@ -168,7 +168,7 @@ class Imgur(object):
         if self.is_it_image():
             if self.contains_extension(self.url):
                 self.images.append(
-                        self.pack_image(self.url, get_image_filename(self.url))
+                        self.pack_image(self.url, self.get_image_filename(self.url))
                     )
                 return
             else:
