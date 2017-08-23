@@ -25,8 +25,12 @@ from shutil import copyfileobj
 from time import sleep
 
 
-__version__ = 'v0.2'
-__status__ = 'Development'
+__author__ = 'petarGitNik'
+__copyright__ = 'Copyright (c) 2017 petarGitNik petargitnik@gmail.com'
+__license__ = 'MIT'
+__version__ = 'v0.2.0'
+__email__ = 'petargitnik@gmail.com'
+__status__ = 'Production'
 
 
 class DownloaderException(Exception):

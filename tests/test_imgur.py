@@ -7,6 +7,14 @@ from imgur.imgur import Imgur
 from imgur.imgur import ImgurException
 
 
+__author__ = 'petarGitNik'
+__copyright__ = 'Copyright (c) 2017 petarGitNik petargitnik@gmail.com'
+__license__ = 'MIT'
+__version__ = 'v0.2.0'
+__email__ = 'petargitnik@gmail.com'
+__status__ = 'Production'
+
+
 @pytest.fixture
 def single_image_i():
     return Imgur('http://i.imgur.com/jedEzFL.jpg')
